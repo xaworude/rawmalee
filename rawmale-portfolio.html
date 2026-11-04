@@ -347,7 +347,7 @@
         position: relative;
         overflow: hidden;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 576px);
         align-items: center;
         gap: clamp(24px, 4vw, 64px);
         padding: clamp(6px, 1.2vh, 12px) var(--pad) clamp(8px, 1.5vh, 14px);
@@ -418,11 +418,16 @@
          keeps its true colors in both modes. Never cropped: the
          full frame displays (contain) at the exact 4:5 ratio.
          The frame is a large fixed size: 720px tall on desktop
-         (576px wide at 4:5), and the hero's right column is
-         sized to the frame (grid column: auto) so the frame is
-         never squeezed shorter by its column. In the stacked
-         layout the frame runs up to 92vw wide, capped at
-         480px, with the height following the 4:5 ratio.
+         (576px wide at 4:5). The frame never exceeds its grid
+         column: the column is capped at 576px and can shrink
+         (minmax(0, 576px)), and the frame's width is capped at
+         100% of that column with the height following the 4:5
+         ratio — so on a wide desktop it sits at the full
+         576×720, and whenever space runs short it scales down
+         instead of ever pushing into the text column. Below
+         1024px the hero stacks into one column — text above,
+         frame below, centred — with the frame running up to
+         92vw wide, capped at 480px.
          Playback is driven by script (see the theme
          block) so prefers-reduced-motion can hold the first
          frame instead of autoplaying. */
@@ -430,13 +435,15 @@
         position: relative;
         z-index: 1;
         min-width: 0;
+        width: min(576px, 100%);
+        max-width: 100%;
         justify-self: center;
         line-height: 0;
       }
       .hero-video video {
         display: block;
-        width: 576px;
-        height: 720px;
+        width: 100%;
+        height: auto;
         max-width: 100%;
         aspect-ratio: 4 / 5;
         object-fit: contain;
@@ -444,10 +451,10 @@
       }
       :root[data-theme="light"] .hero-video .hv-dark { display: none; }
       :root[data-theme="dark"] .hero-video .hv-light { display: none; }
-      @media (max-width: 860px) {
+      @media (max-width: 1024px) {
         .hero { grid-template-columns: 1fr; }
-        .hero-video { justify-self: start; }
-        .hero-video video { width: min(92vw, 480px); height: auto; }
+        .hero-video { justify-self: center; width: min(92vw, 480px, 100%); }
+        .hero-video video { width: 100%; height: auto; }
       }
       @media (prefers-reduced-motion: reduce) {
         .explore-btn, .explore-btn .eb-rule, .explore-btn .eb-arrow { transition: none; }
