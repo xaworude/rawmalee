@@ -7,6 +7,9 @@
     <script>
       (function(){try{var s=localStorage.getItem("rawmale-theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);document.documentElement.style.colorScheme=t;}catch(e){document.documentElement.setAttribute("data-theme","light");}})();
     </script>
+    <script>
+      (function(){try{var m=localStorage.getItem("rawmale-motion");if(m!=="on"&&m!=="off")m="system";document.documentElement.setAttribute("data-motion",m);}catch(e){document.documentElement.setAttribute("data-motion","system");}})();
+    </script>
     <link rel="icon" href="data:," />
     <title>RAWMALE PORTFOLIO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -241,9 +244,9 @@
       }
       [data-plx] { will-change: transform; }
       @media (prefers-reduced-motion: reduce) {
-        .view.leaving { animation: none; }
-        .view.enter > *, .view.enter .about-wrap > * { animation: none; }
-        #pageProgress { display: none; }
+        :root:not([data-motion="on"]) .view.leaving { animation: none; }
+        :root:not([data-motion="on"]) .view.enter > *, :root:not([data-motion="on"]) .view.enter .about-wrap > * { animation: none; }
+        :root:not([data-motion="on"]) #pageProgress { display: none; }
       }
 
       /* ——— Scroll motion system ———
@@ -328,10 +331,10 @@
       }
       .wrv.in .w-in { transform: none; }
       @media (prefers-reduced-motion: reduce) {
-        .rv, .rv-fade { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .rv-card { opacity: 1 !important; transition: none !important; }
-        .rv-card .art { clip-path: none !important; transition: none !important; }
-        .wrv .w-in { transform: none !important; transition: none !important; }
+        :root:not([data-motion="on"]) .rv, :root:not([data-motion="on"]) .rv-fade { opacity: 1 !important; transform: none !important; transition: none !important; }
+        :root:not([data-motion="on"]) .rv-card { opacity: 1 !important; transition: none !important; }
+        :root:not([data-motion="on"]) .rv-card .art { clip-path: none !important; transition: none !important; }
+        :root:not([data-motion="on"]) .wrv .w-in { transform: none !important; transition: none !important; }
       }
 
       /* ———————————————— Hero ————————————————
@@ -445,7 +448,7 @@
         .hero-collage { max-width: min(320px, 100%); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .explore-btn, .explore-btn .eb-rule, .explore-btn .eb-arrow { transition: none; }
+        :root:not([data-motion="on"]) .explore-btn, :root:not([data-motion="on"]) .explore-btn .eb-rule, :root:not([data-motion="on"]) .explore-btn .eb-arrow { transition: none; }
       }
       .arrow-btn {
         width: 42px;
@@ -971,7 +974,7 @@
         .hy-thumb .t-art { height: 62px; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .hy-art.enter-next, .hy-art.enter-prev, .arc-art.enter-next, .arc-art.enter-prev { animation: none; }
+        :root:not([data-motion="on"]) .hy-art.enter-next, :root:not([data-motion="on"]) .hy-art.enter-prev, :root:not([data-motion="on"]) .arc-art.enter-next, :root:not([data-motion="on"]) .arc-art.enter-prev { animation: none; }
       }
 
       /* ———————————————— Poster archive (redesigned gallery) ————————————————
@@ -1230,10 +1233,10 @@
         .arc-foot { flex-direction: column; align-items: flex-start; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .arc-info.swap { animation: none; }
-        .lightbox .lb-art { transition: none; }
-        .lightbox .lb-art.enter-next, .lightbox .lb-art.enter-prev { animation: none; }
-        .lb-info-main h3, .lb-info-main p, .lb-meta-row, .lb-px, .lb-peek { transition: none; }
+        :root:not([data-motion="on"]) .arc-info.swap { animation: none; }
+        :root:not([data-motion="on"]) .lightbox .lb-art { transition: none; }
+        :root:not([data-motion="on"]) .lightbox .lb-art.enter-next, :root:not([data-motion="on"]) .lightbox .lb-art.enter-prev { animation: none; }
+        :root:not([data-motion="on"]) .lb-info-main h3, :root:not([data-motion="on"]) .lb-info-main p, :root:not([data-motion="on"]) .lb-meta-row, :root:not([data-motion="on"]) .lb-px, :root:not([data-motion="on"]) .lb-peek { transition: none; }
       }
 
       /* ———————————————— Lightbox ———————————————— */
@@ -1490,10 +1493,10 @@
         .lb-strip { flex-wrap: wrap; gap: 10px; }
       }
       @media (prefers-reduced-motion: reduce) {
-        html { scroll-behavior: auto; }
-        .view.active { animation: none; }
-        .proj .p-art .art-img, .index-row, .explore-btn { transition: none; }
-        body, .topbar, .tab, .tab > span, .feat-card, .ph-area, .hy-stage, .hy-thumb .t-art, .lb-bar, .lightbox, footer, .slot, .a-disc button, .arrow-btn, .theme-toggle { transition: none !important; }
+        :root:not([data-motion="on"]) { scroll-behavior: auto; }
+        :root:not([data-motion="on"]) .view.active { animation: none; }
+        :root:not([data-motion="on"]) .proj .p-art .art-img, :root:not([data-motion="on"]) .index-row, :root:not([data-motion="on"]) .explore-btn { transition: none; }
+        :root:not([data-motion="on"]) body, :root:not([data-motion="on"]) .topbar, :root:not([data-motion="on"]) .tab, :root:not([data-motion="on"]) .tab > span, :root:not([data-motion="on"]) .feat-card, :root:not([data-motion="on"]) .ph-area, :root:not([data-motion="on"]) .hy-stage, :root:not([data-motion="on"]) .hy-thumb .t-art, :root:not([data-motion="on"]) .lb-bar, :root:not([data-motion="on"]) .lightbox, :root:not([data-motion="on"]) footer, :root:not([data-motion="on"]) .slot, :root:not([data-motion="on"]) .a-disc button, :root:not([data-motion="on"]) .arrow-btn, :root:not([data-motion="on"]) .theme-toggle { transition: none !important; }
       }
 
       /* ———————————————— Display type: wordmark & titles only ————————————————
@@ -1581,6 +1584,107 @@
         .hero h1 { font-size: clamp(56px, 16vw, 96px); }
         .gal-head h2, .arc-title, .about-wrap h2 { font-size: clamp(44px, 12vw, 72px); }
       }
+
+      /* ———————————————— Motion preference control ————————————————
+         Segmented System / On / Off switch beside the theme toggle
+         in the topbar. "System" (the default) leaves the OS
+         prefers-reduced-motion setting in charge, exactly as
+         before. "On" re-enables animation even when the OS asks to
+         reduce it: every reduced-motion block above is gated with
+         :root:not([data-motion="on"]), so its rules simply stop
+         matching, and the JS gates follow the same preference.
+         "Off" stills the page through the mirror rules below,
+         whatever the OS says. The choice persists in localStorage
+         ("rawmale-motion") and is mirrored to <html data-motion>
+         before first paint by the boot script in <head>. */
+      .motion-ctl {
+        display: inline-flex;
+        align-items: stretch;
+        border: 1.5px solid var(--line);
+        flex: none;
+        align-self: center;
+      }
+      .motion-ctl .mc-label {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 2px 0 9px;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        color: var(--ink-faint);
+      }
+      .motion-ctl button {
+        background: transparent;
+        border: 0;
+        color: var(--ink-soft);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 7px 9px;
+        line-height: 1;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      .motion-ctl button + button { border-left: 1px solid var(--hair); }
+      .motion-ctl button:hover { color: var(--blue); }
+      .motion-ctl button[aria-pressed="true"] { background: var(--blue); color: var(--on-blue); }
+      @media (max-width: 680px) {
+        .motion-ctl .mc-label { display: none; }
+        .motion-ctl button { padding: 6px 7px; font-size: 9.5px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        :root:not([data-motion="on"]) .motion-ctl button { transition: none !important; }
+      }
+
+      /* Motion Off — a mirror of every reduced-motion rule above,
+         applied whenever the visitor chooses Off, regardless of
+         the OS setting. */
+      :root[data-motion="off"] { scroll-behavior: auto; }
+      :root[data-motion="off"] .view.active,
+      :root[data-motion="off"] .view.leaving { animation: none; }
+      :root[data-motion="off"] .view.enter > *,
+      :root[data-motion="off"] .view.enter .about-wrap > * { animation: none; }
+      :root[data-motion="off"] #pageProgress { display: none; }
+      :root[data-motion="off"] .rv,
+      :root[data-motion="off"] .rv-fade { opacity: 1 !important; transform: none !important; transition: none !important; }
+      :root[data-motion="off"] .rv-card { opacity: 1 !important; transition: none !important; }
+      :root[data-motion="off"] .rv-card .art { clip-path: none !important; transition: none !important; }
+      :root[data-motion="off"] .wrv .w-in { transform: none !important; transition: none !important; }
+      :root[data-motion="off"] .explore-btn,
+      :root[data-motion="off"] .explore-btn .eb-rule,
+      :root[data-motion="off"] .explore-btn .eb-arrow { transition: none; }
+      :root[data-motion="off"] .hy-art.enter-next,
+      :root[data-motion="off"] .hy-art.enter-prev,
+      :root[data-motion="off"] .arc-art.enter-next,
+      :root[data-motion="off"] .arc-art.enter-prev { animation: none; }
+      :root[data-motion="off"] .arc-info.swap { animation: none; }
+      :root[data-motion="off"] .lightbox .lb-art { transition: none; }
+      :root[data-motion="off"] .lightbox .lb-art.enter-next,
+      :root[data-motion="off"] .lightbox .lb-art.enter-prev { animation: none; }
+      :root[data-motion="off"] .lb-info-main h3,
+      :root[data-motion="off"] .lb-info-main p,
+      :root[data-motion="off"] .lb-meta-row,
+      :root[data-motion="off"] .lb-px,
+      :root[data-motion="off"] .lb-peek { transition: none; }
+      :root[data-motion="off"] .proj .p-art .art-img,
+      :root[data-motion="off"] .index-row,
+      :root[data-motion="off"] .explore-btn { transition: none; }
+      :root[data-motion="off"] body,
+      :root[data-motion="off"] .topbar,
+      :root[data-motion="off"] .tab,
+      :root[data-motion="off"] .tab > span,
+      :root[data-motion="off"] .feat-card,
+      :root[data-motion="off"] .ph-area,
+      :root[data-motion="off"] .hy-stage,
+      :root[data-motion="off"] .hy-thumb .t-art,
+      :root[data-motion="off"] .lb-bar,
+      :root[data-motion="off"] .lightbox,
+      :root[data-motion="off"] footer,
+      :root[data-motion="off"] .slot,
+      :root[data-motion="off"] .a-disc button,
+      :root[data-motion="off"] .arrow-btn,
+      :root[data-motion="off"] .theme-toggle,
+      :root[data-motion="off"] .motion-ctl button { transition: none !important; }
     </style>
   </head>
   <body>
@@ -1611,6 +1715,12 @@
       </nav>
       <div class="topbar-actions">
         <div class="topbar-meta">Creative Portfolio<br />2026</div>
+        <div class="motion-ctl" role="group" aria-label="Motion preference">
+          <span class="mc-label" aria-hidden="true">MOTION</span>
+          <button type="button" data-motion-opt="system" aria-pressed="true" title="Motion follows your system setting">System</button>
+          <button type="button" data-motion-opt="on" aria-pressed="false" title="Always animate, even if your system asks to reduce motion">On</button>
+          <button type="button" data-motion-opt="off" aria-pressed="false" title="Turn all animation off">Off</button>
+        </div>
         <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle theme">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.6 14.2A8.5 8.5 0 0 1 9.8 3.4a.6.6 0 0 0-.8-.8 10.5 10.5 0 1 0 12.4 12.4.6.6 0 0 0-.8-.8Z"/></svg>
@@ -1854,8 +1964,30 @@
       var viewTimer = null;
       var enterTimer = null;
       var leavingViewEl = null;
+      /* ——— Motion preference ———
+         "system" (the default) follows the OS/browser
+         prefers-reduced-motion setting, exactly as before. "on"
+         runs animation even when the OS asks to reduce it; "off"
+         stills everything. The choice persists in localStorage
+         and is mirrored to <html data-motion>, which the
+         stylesheet's reduced-motion gates key off. Every motion
+         gate on the page — view transitions, reveals, parallax,
+         viewer autoplay — reads the effective state through
+         motionReduced() / motionAllowed() below. */
+      var osReduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var motionPref = "system";
+      try {
+        var savedMotion = localStorage.getItem("rawmale-motion");
+        if (savedMotion === "on" || savedMotion === "off" || savedMotion === "system") motionPref = savedMotion;
+      } catch (e) {}
+      document.documentElement.setAttribute("data-motion", motionPref);
+      function motionReduced() {
+        if (motionPref === "on") return false;
+        if (motionPref === "off") return true;
+        return osReduceMq.matches;
+      }
       function motionAllowed() {
-        return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        return !motionReduced();
       }
       /* Blue rule sweep under the header while views change */
       function runPageProgress() {
@@ -1900,7 +2032,7 @@
         if (leavingViewEl) { leavingViewEl.classList.remove("active", "leaving"); leavingViewEl = null; }
         if (!navStarted) { navStarted = true; finishViewSwap(name); return; }
         if (wasPending) { finishViewSwap(name); return; }
-        if (prev === name) { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+        if (prev === name) { window.scrollTo({ top: 0, behavior: motionAllowed() ? "smooth" : "auto" }); return; }
         var leavingEl = document.getElementById("view-" + prev);
         if (!motionAllowed() || !leavingEl || !leavingEl.classList.contains("active")) {
           finishViewSwap(name);
@@ -1923,7 +2055,7 @@
         var sc = e.target.closest("[data-scrollto]");
         if (sc) {
           var target = document.getElementById(sc.getAttribute("data-scrollto"));
-          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+          if (target) target.scrollIntoView({ behavior: motionAllowed() ? "smooth" : "auto", block: "start" });
         }
       });
 
@@ -2125,7 +2257,7 @@
         var thumb = rail.querySelectorAll("[data-arcthumb-cat]")[galState[key].idx];
         if (!thumb) return;
         var target = thumb.offsetLeft - (rail.clientWidth - thumb.offsetWidth) / 2;
-        rail.scrollTo({ left: Math.max(0, target), behavior: smooth ? "smooth" : "auto" });
+        rail.scrollTo({ left: Math.max(0, target), behavior: smooth && motionAllowed() ? "smooth" : "auto" });
       }
 
       /* ——— Archive wiring (every category): stage drag/swipe +
@@ -2226,7 +2358,11 @@
       /* ——— Lightbox (fullscreen, per-category state, infinite loop) ——— */
       var lb = document.getElementById("lightbox");
       var lbState = { cat: "poster", idx: 0, img: 0, dir: 0 };
-      var reduceMotionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      /* Live view of the effective reduced-motion state: it follows
+         the Motion preference above, so every existing gate below
+         (viewer autoplay, drag-follow, parallax, info reveal,
+         smooth thumbnail scrolling) honours System / On / Off. */
+      var reduceMotionMq = { get matches() { return motionReduced(); } };
       var lbInfoEl = document.getElementById("lbInfo");
       /* Neighbour peek panel: the adjacent artwork at its own
          ratio — purely context beside the centred artwork. */
@@ -2354,7 +2490,7 @@
         lbAutoStop();
         lb.classList.remove("shown");
         if (lbHideTimer) clearTimeout(lbHideTimer);
-        var wait = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 340;
+        var wait = reduceMotionMq.matches ? 0 : 340;
         lbHideTimer = setTimeout(function () { lb.classList.remove("open"); lbHideTimer = null; }, wait);
         document.body.style.overflow = "";
         arcGo(lbState.cat, lbState.idx, 0); /* gallery keeps the lightbox's position */
@@ -2545,7 +2681,14 @@
       var plxTicking = false;
       function plxUpdate() {
         plxTicking = false;
-        if (reduceMotionMq.matches) return;
+        if (reduceMotionMq.matches) {
+          /* Motion is off (by preference or OS): settle every
+             drift layer back to its natural position instead of
+             leaving it frozen mid-drift. */
+          for (var ci = 0; ci < plxEls.length; ci++) { if (plxEls[ci].style.transform) plxEls[ci].style.transform = ""; }
+          document.querySelectorAll(".arc-stage .arc-img, .feat-card .art-img").forEach(function (im) { if (im.style.transform) im.style.transform = ""; });
+          return;
+        }
         var vh = window.innerHeight || 800;
         for (var i = 0; i < plxEls.length; i++) {
           var el = plxEls[i];
@@ -2707,6 +2850,44 @@
            failure, everything is simply shown. */
         document.querySelectorAll(".rv, .rv-fade, .rv-card, .wrv").forEach(function (el) { el.classList.add("in"); });
       }
+
+      /* ——— Motion preference control ———
+         The segmented System / On / Off switch in the topbar.
+         Changing it persists the choice and applies it live: the
+         data-motion attribute re-gates the stylesheet at once,
+         and the running systems (viewer autoplay, parallax)
+         re-check the effective state on their next tick. */
+      (function () {
+        var btns = document.querySelectorAll("[data-motion-opt]");
+        function syncMotionBtns() {
+          btns.forEach(function (b) {
+            b.setAttribute("aria-pressed", b.getAttribute("data-motion-opt") === motionPref ? "true" : "false");
+          });
+        }
+        syncMotionBtns();
+        btns.forEach(function (b) {
+          b.addEventListener("click", function () {
+            var p = b.getAttribute("data-motion-opt");
+            if (p !== "on" && p !== "off") p = "system";
+            motionPref = p;
+            document.documentElement.setAttribute("data-motion", p);
+            try { localStorage.setItem("rawmale-motion", p); } catch (e) {}
+            syncMotionBtns();
+            if (typeof lbAutoSchedule === "function") lbAutoSchedule();
+            if (typeof plxRequest === "function") plxRequest();
+          });
+        });
+        /* The OS setting flips while the preference is "System":
+           re-evaluate the running systems so the page follows
+           immediately instead of on the next scroll or step. */
+        if (osReduceMq.addEventListener) {
+          osReduceMq.addEventListener("change", function () {
+            if (motionPref !== "system") return;
+            if (typeof lbAutoSchedule === "function") lbAutoSchedule();
+            if (typeof plxRequest === "function") plxRequest();
+          });
+        }
+      })();
 
       /* Deep link: #poster, #clothing, #about */
       var initial = (location.hash || "#home").slice(1);
